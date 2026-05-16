@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-16T12:52:31.901Z",
+    "end": "2026-05-16T12:52:49.441Z",
+    "duration": 17540,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ccd018c6-af40-4641-96b9-6c2cfb8fd701",
+      "title": "",
+      "fullFile": "cypress\\e2e\\JPetStore\\add_and remove.cy.js",
+      "file": "cypress\\e2e\\JPetStore\\add_and remove.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "459f1c8a-3356-499b-b5e9-443e48e035ea",
+          "title": "Add to items to Cart and remove from cart",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify user can add multiple items to cart",
+              "fullTitle": "Add to items to Cart and remove from cart verify user can add multiple items to cart",
+              "timedOut": null,
+              "duration": 10473,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// add first item to cart\ncy.xpath(_Selector.selectors.dogs_ctgry).click();\ncy.xpath(_Selector.selectors.bulldog_productid).click();\ncy.contains('Add to Cart').should('be.visible');\ncy.xpath(_Selector.selectors.male_adult_bulldog_cart_btn).click();\ncy.contains('Male Adult Bulldog').should('be.visible');\n// add second item to cart\ncy.xpath(_Selector.selectors.return_to_main_menu_btn).click();\ncy.xpath(_Selector.selectors.fish_ctgry).click();\ncy.xpath(_Selector.selectors.goldfish_productid).click();\ncy.contains('Add to Cart').should('be.visible');\ncy.xpath(_Selector.selectors.adult_female_goldfish_cart_btn).click();\ncy.contains('Adult Female Goldfish').should('be.visible');\n// add third item to cart\ncy.xpath(_Selector.selectors.return_to_main_menu_btn).click();\ncy.xpath(_Selector.selectors.fish_ctgry).click();\ncy.xpath(_Selector.selectors.angelfish_productid).click();\ncy.contains('Add to Cart').should('be.visible');\ncy.xpath(_Selector.selectors.small_angelfish_cart_btn).click();\ncy.contains('Small Angelfish').should('be.visible');\n// assert all three items are in cart\ncy.xpath(_Selector.selectors.cart_body).within(() => {\n  cy.contains('Male Adult Bulldog').should('be.visible');\n  cy.contains('Adult Female Goldfish').should('be.visible');\n  cy.contains('Small Angelfish').should('be.visible');\n});",
+              "err": {},
+              "uuid": "d6b15416-ee54-4535-942c-2b37ca17ad95",
+              "parentUUID": "459f1c8a-3356-499b-b5e9-443e48e035ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user can remove an item from cart",
+              "fullTitle": "Add to items to Cart and remove from cart Verify user can remove an item from cart",
+              "timedOut": null,
+              "duration": 5492,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\JPetStore\\\\add_and remove.cy.js\\\\Add to items to Cart and remove from cart -- Verify user can remove an item from cart (failed).png\"\n    ]\n  ]\n}",
+              "code": "// Navigate to cart — session is restored, server cart is still alive\n// cy.visit('https://jpetstore.aspectran.com/cart/viewCart');\ncy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.cart_body).should('contain.text', 'Remove');\ncy.xpath(_Selector.selectors.remove_aitem_btn).eq(2).click();\ncy.xpath(_Selector.selectors.cart_body).within(() => {\n  cy.contains('Small Angelfish').should('not.exist');\n  // cy.contains('Adult Female Goldfish').should('be.visible');\n});\ncy.xpath(\"/html/body/section/div[2]/div[2]/form/table/tbody/tr[1]/td[3]\").within(() => {\n  // cy.contains('Male Adult Bulldog').should('be.visible');\n});\ncy.xpath('/html/body/section/div[2]/div[2]/form/table/tbody/tr/td[3]').should('contain.text');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '[ <td>, 1 more... ]' to contain text undefined, but the text was '\\n                    Male Adult \\n                     \\n                     Bulldog\\n                \\n                    Adult Female \\n                     \\n                     Goldfish\\n                '",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '[ <td>, 1 more... ]' to contain text undefined, but the text was '\\n                    Male Adult \\n                     \\n                     Bulldog\\n                \\n                    Adult Female \\n                     \\n                     Goldfish\\n                '\n    at Context.eval (webpack://cypress/./cypress/e2e/JPetStore/add_and remove.cy.js:74:77)",
+                "diff": null
+              },
+              "uuid": "730a3460-402a-4288-8fbf-db4532aed863",
+              "parentUUID": "459f1c8a-3356-499b-b5e9-443e48e035ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user can remove all items from cart",
+              "fullTitle": "Add to items to Cart and remove from cart verify user can remove all items from cart",
+              "timedOut": null,
+              "duration": 1321,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Navigate to cart — remaining 2 items still in server cart\n//  cy.visit('https://jpetstore.aspectran.com/cart/viewCart');\ncy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.cart_body).should('contain.text', 'Remove All');\ncy.xpath(_Selector.selectors.remove_all_btn).click();\ncy.xpath(_Selector.selectors.cart_body).within(() => {\n  cy.contains('Male Adult Bulldog').should('not.exist');\n  cy.contains('Adult Female Goldfish').should('not.exist');\n});",
+              "err": {},
+              "uuid": "63c2252e-d8a1-4779-a900-63b0364c88a6",
+              "parentUUID": "459f1c8a-3356-499b-b5e9-443e48e035ea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d6b15416-ee54-4535-942c-2b37ca17ad95",
+            "63c2252e-d8a1-4779-a900-63b0364c88a6"
+          ],
+          "failures": [
+            "730a3460-402a-4288-8fbf-db4532aed863"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17286,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.3.2"
+    }
+  }
+}

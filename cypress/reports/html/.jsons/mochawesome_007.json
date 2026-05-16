@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-05-12T12:47:40.605Z",
+    "end": "2026-05-12T12:47:55.211Z",
+    "duration": 14606,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cc88d28d-fd1c-44a6-a573-e0279a8f29df",
+      "title": "",
+      "fullFile": "cypress\\e2e\\JPetStore\\Registration.cy.js",
+      "file": "cypress\\e2e\\JPetStore\\Registration.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0b00cf27-c28d-4bfb-8e6c-0dc746d0f988",
+          "title": "Registration",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can Sign Up With valid credentials",
+              "fullTitle": "Registration User can Sign Up With valid credentials",
+              "timedOut": null,
+              "duration": 7381,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//cy.visit('https://jpetstore.aspectran.com/')\ncy.xpath(_Selector.selectors.Sign_up).should('have.text', 'Sign Up');\ncy.xpath(_Selector.selectors.Sign_up).click();\ncy.xpath(_Selector.selectors.User_id).should('be.visible').type(User);\ncy.xpath(_Selector.selectors.password).type('Pass@123');\ncy.xpath(_Selector.selectors.confirm_password).type('Pass@123');\ncy.xpath(_Selector.selectors.firstname).type('Saina');\ncy.xpath(_Selector.selectors.lastname).type('abc');\ncy.xpath(_Selector.selectors.email_field).type(email);\ncy.xpath(_Selector.selectors.phone).type(phone_nbr);\ncy.xpath(_Selector.selectors.address1).type('Jadibuti');\ncy.xpath(_Selector.selectors.address2).type('Kathamdu');\ncy.xpath(_Selector.selectors.city).type('Kathmandu');\ncy.xpath(_Selector.selectors.state).type('Bagmati');\ncy.xpath(_Selector.selectors.zip).type('12345');\ncy.xpath(_Selector.selectors.country).type('Nepal');\ncy.xpath(_Selector.selectors.language).select('German');\ncy.xpath(_Selector.selectors.fav_category).select('Dogs');\n//cy.get('body').should('have.value','japanese').click();\ncy.xpath(_Selector.selectors.mylist).check();\ncy.xpath(_Selector.selectors.mybanner).check();\ncy.xpath(_Selector.selectors.saveinfo).should('have.text', 'Save Account Information').click();\n//   cy.xpath('/html/body/section/div[2]/div[2]/div/div/form/div/button').click();\ncy.contains('Your account has been created').should('be.visible');",
+              "err": {},
+              "uuid": "feea5c83-54f1-4f42-ba40-a64df1df0399",
+              "parentUUID": "0b00cf27-c28d-4bfb-8e6c-0dc746d0f988",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User can Sign Up With empty fields",
+              "fullTitle": "Registration User can Sign Up With empty fields",
+              "timedOut": null,
+              "duration": 1929,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//cy.visit('https://jpetstore.aspectran.com/')\ncy.xpath(_Selector.selectors.Sign_up).should('have.text', 'Sign Up');\ncy.xpath(_Selector.selectors.Sign_up).click();\ncy.xpath(_Selector.selectors.saveinfo).should('have.text', 'Save Account Information').click();\ncy.contains('Your account has been created').should('not.exist');\ncy.url().should('include', 'account');",
+              "err": {},
+              "uuid": "c9987067-b4c0-4a8a-bc0a-459d688809bc",
+              "parentUUID": "0b00cf27-c28d-4bfb-8e6c-0dc746d0f988",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User can Sign Up with partially empty fields",
+              "fullTitle": "Registration User can Sign Up with partially empty fields",
+              "timedOut": null,
+              "duration": 5167,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//cy.visit('https://jpetstore.aspectran.com/')\ncy.xpath(_Selector.selectors.Sign_up).should('have.text', 'Sign Up');\ncy.xpath(_Selector.selectors.Sign_up).click();\ncy.xpath(_Selector.selectors.password).type('Pass@123');\ncy.xpath(_Selector.selectors.confirm_password).type('Pass@123');\ncy.xpath(_Selector.selectors.firstname).type('Saina');\ncy.xpath(_Selector.selectors.lastname).type('abc');\ncy.xpath(_Selector.selectors.email_field).type(email);\ncy.xpath(_Selector.selectors.address1).type('Jadibuti');\ncy.xpath(_Selector.selectors.address2).type('Kathamdu');\ncy.xpath(_Selector.selectors.city).type('Kathmandu');\ncy.xpath(_Selector.selectors.state).type('Bagmati');\ncy.xpath(_Selector.selectors.zip).type('12345');\ncy.xpath(_Selector.selectors.country).type('Nepal');\ncy.xpath(_Selector.selectors.language).select('German');\ncy.xpath(_Selector.selectors.mylist).check();\ncy.xpath(_Selector.selectors.mybanner).check();\ncy.xpath(_Selector.selectors.saveinfo).should('have.text', 'Save Account Information').click();\ncy.contains('Your account has been created').should('not.exist');\ncy.url().should('include', 'account');",
+              "err": {},
+              "uuid": "212dca51-dbc5-4d1a-8695-8d89ed6c98ab",
+              "parentUUID": "0b00cf27-c28d-4bfb-8e6c-0dc746d0f988",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "feea5c83-54f1-4f42-ba40-a64df1df0399",
+            "c9987067-b4c0-4a8a-bc0a-459d688809bc",
+            "212dca51-dbc5-4d1a-8695-8d89ed6c98ab"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14477,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.3.2"
+    }
+  }
+}

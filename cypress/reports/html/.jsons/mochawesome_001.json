@@ -1,0 +1,271 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 9,
+    "passes": 7,
+    "pending": 0,
+    "failures": 2,
+    "start": "2026-05-12T12:42:26.329Z",
+    "end": "2026-05-12T12:43:22.895Z",
+    "duration": 56566,
+    "testsRegistered": 9,
+    "passPercent": 77.77777777777779,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0ff12306-0da6-42c8-8220-a92475923f5a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\JPetStore\\Birds_category.cy.js",
+      "file": "cypress\\e2e\\JPetStore\\Birds_category.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+          "title": "Add to Cart",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify user can add items to cart from cats category ",
+              "fullTitle": "Add to Cart verify user can add items to cart from cats category ",
+              "timedOut": null,
+              "duration": 11921,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.birds_ctgry).click();\ncy.xpath(_Selector.selectors.amazon_parrot_product_id).click();\ncy.xpath(_Selector.selectors.adult_male_amazonparrot_itemid).click();\ncy.contains('Add to Cart').should('be.visible');\ncy.xpath(_Selector.selectors.adult_male_amazonparrot_crtbtn).click();\ncy.contains('Adult Male Amazon Parrot').should('be.visible');\ncy.xpath(_Selector.selectors.return_to_main_menu_btn).click();\ncy.xpath(_Selector.selectors.birds_ctgry).click();\ncy.xpath(_Selector.selectors.finch_product_id).click();\ncy.contains('Add to Cart').should('be.visible');\ncy.xpath(_Selector.selectors.adult_male_finch_crtbtn).click();\ncy.contains('Adult Male Finch').should('be.visible');\ncy.xpath(_Selector.selectors.cart_body).within(() => {\n  cy.contains('Adult Male Amazon Parrot').should('be.visible');\n  cy.contains('Adult Male Finch').should('be.visible');\n});",
+              "err": {},
+              "uuid": "bfcaea48-d64f-486e-89e0-5e06e38a151d",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user can increase the item in cart",
+              "fullTitle": "Add to Cart verify user can increase the item in cart",
+              "timedOut": null,
+              "duration": 1950,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.quantity).eq(1).clear().type('10');\ncy.xpath(_Selector.selectors.update_btn).click();\ncy.xpath(_Selector.selectors.quantity).eq(1).should('have.value', '10');",
+              "err": {},
+              "uuid": "b2e81ad3-1f8b-445c-9c81-6b9e27ca91d3",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user cannot decrease the item in cart below 0",
+              "fullTitle": "Add to Cart verify user cannot decrease the item in cart below 0",
+              "timedOut": null,
+              "duration": 2130,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.quantity).eq(0).clear().type('-1');\ncy.xpath(_Selector.selectors.update_btn).click();\ncy.xpath(_Selector.selectors.quantity).eq(0).should('have.value', '-1');",
+              "err": {},
+              "uuid": "8d798701-cbab-4aef-a240-39de3a9a2a65",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify total price increases with quantity",
+              "fullTitle": "Add to Cart verify total price increases with quantity",
+              "timedOut": null,
+              "duration": 6900,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\JPetStore\\\\Birds_category.cy.js\\\\Add to Cart -- verify total price increases with quantity (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.xpath(_Selector.selectors.cart_btn).click();\nconst quantity = 5;\ncy.xpath(_Selector.selectors.item_price).eq(1).invoke('text').then(priceText => {\n  const itemPrice = parseFloat(priceText.replace('$', ''));\n  cy.xpath(_Selector.selectors.quantity).eq(1).clear().type('{selectall}{backspace}' + quantity);\n  cy.xpath(_Selector.selectors.update_btn).click();\n  cy.wait(1000);\n  const expectedTotal = itemPrice * quantity;\n  cy.xpath(_Selector.selectors.total_cost).eq(1).invoke('text').then(totalText => {\n    const uiTotal = parseFloat(totalText.replace('$', ''));\n    expect(uiTotal).to.equal(expectedTotal);\n  });\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `1`, but never found it. Queried from:\n\n              > <td>",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `1`, but never found it. Queried from:\n\n              > <td>\n    at Context.eval (webpack://cypress/./cypress/e2e/JPetStore/Birds_category.cy.js:82:39)",
+                "diff": null
+              },
+              "uuid": "025f45eb-6c20-470e-8280-43b0dad6da4f",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify user can remove an item from cart",
+              "fullTitle": "Add to Cart Verify user can remove an item from cart",
+              "timedOut": null,
+              "duration": 5817,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\JPetStore\\\\Birds_category.cy.js\\\\Add to Cart -- Verify user can remove an item from cart (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.remove_aitem_btn).eq(1).click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `1`, but never found it. Queried from:\n\n              > <a.btn.btn-danger.btn-sm>",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `1`, but never found it. Queried from:\n\n              > <a.btn.btn-danger.btn-sm>\n    at Context.eval (webpack://cypress/./cypress/e2e/JPetStore/Birds_category.cy.js:107:45)",
+                "diff": null
+              },
+              "uuid": "06252438-3c6e-482b-9e26-81a83e514c00",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user can remove all items from cart",
+              "fullTitle": "Add to Cart verify user can remove all items from cart",
+              "timedOut": null,
+              "duration": 2535,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.remove_all_btn).click();",
+              "err": {},
+              "uuid": "30a0692b-268a-4fbb-9df3-de900c62e6b0",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user can checkout with valid credentials",
+              "fullTitle": "Add to Cart verify user can checkout with valid credentials",
+              "timedOut": null,
+              "duration": 10814,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.birds_ctgry).click();\ncy.xpath(_Selector.selectors.amazon_parrot_product_id).click();\ncy.xpath(_Selector.selectors.adult_male_amazonparrot_itemid).click();\ncy.xpath(_Selector.selectors.adult_male_amazonparrot_crtbtn).click();\ncy.xpath(_Selector.selectors.return_to_main_menu_btn).click();\ncy.xpath(_Selector.selectors.birds_ctgry).click();\ncy.xpath(_Selector.selectors.finch_product_id).click();\ncy.xpath(_Selector.selectors.adult_male_finch_crtbtn).click();\ncy.xpath(_Selector.selectors.cart_btn).click();\ncy.xpath(_Selector.selectors.checkout_btn).click();\ncy.xpath(_Selector.selectors.card_type).select('MasterCard');\ncy.xpath(_Selector.selectors.card_no).clear().type('16714712129838');\ncy.xpath(_Selector.selectors.expiry_date).clear().type('12/2029');\ncy.xpath(_Selector.selectors.checkout_firstname).clear().type('Zoya');\ncy.xpath(_Selector.selectors.checkout_lastname).clear().type('Khan');\ncy.xpath(_Selector.selectors.checkout_address1).clear().type('Sanga');\ncy.xpath(_Selector.selectors.checkout_address2).clear().type('Kavre');\ncy.xpath(_Selector.selectors.checkout_city).clear().type('Bhaktapur');\ncy.xpath(_Selector.selectors.checkout_state).clear().type('Bagmati');\ncy.xpath(_Selector.selectors.checkout_zip).clear().type('12345');\ncy.xpath(_Selector.selectors.checkout_country).clear().type(\"nepal\");\ncy.xpath(_Selector.selectors.checkout_continue_btn).click();\ncy.contains('Please confirm the information below and then press continue').should('be.visible');\ncy.xpath(_Selector.selectors.confirm_btn).click();\ncy.contains('Thank you, your order has been submitted.').should('be.visible');",
+              "err": {},
+              "uuid": "21f12f88-1997-4c2e-9fc8-d64ca58b61af",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user cannot checkout with empty checkout details",
+              "fullTitle": "Add to Cart verify user cannot checkout with empty checkout details",
+              "timedOut": null,
+              "duration": 4478,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.fish_ctgry).click();\ncy.xpath(_Selector.selectors.goldfish_productid).click();\ncy.xpath(_Selector.selectors.adult_female_goldfish_cart_btn).click();\ncy.xpath(_Selector.selectors.checkout_btn).click();\ncy.xpath(_Selector.selectors.card_no).clear();\ncy.xpath(_Selector.selectors.expiry_date).clear();\ncy.xpath(_Selector.selectors.checkout_firstname).clear();\ncy.xpath(_Selector.selectors.checkout_lastname).clear();\ncy.xpath(_Selector.selectors.checkout_address1).clear();\ncy.xpath(_Selector.selectors.checkout_address2).clear();\ncy.xpath(_Selector.selectors.checkout_city).clear();\ncy.xpath(_Selector.selectors.checkout_state).clear();\ncy.xpath(_Selector.selectors.checkout_zip).clear();\ncy.xpath(_Selector.selectors.checkout_country).clear();\ncy.xpath(_Selector.selectors.checkout_continue_btn).click();\ncy.contains('must not be blank').should('be.visible');",
+              "err": {},
+              "uuid": "32cb56e6-18a2-47ba-ba48-bd4e68b7bc4a",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify user can delete their order",
+              "fullTitle": "Add to Cart verify user can delete their order",
+              "timedOut": null,
+              "duration": 9665,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath(_Selector.selectors.fish_ctgry).click();\ncy.xpath(_Selector.selectors.angelfish_productid).click();\ncy.xpath(_Selector.selectors.small_angelfish_cart_btn).click();\ncy.xpath(_Selector.selectors.checkout_btn).click();\ncy.xpath(_Selector.selectors.card_type).select('MasterCard');\ncy.xpath(_Selector.selectors.card_no).clear().type('16714712129838');\ncy.xpath(_Selector.selectors.expiry_date).clear().type('12/2029');\ncy.xpath(_Selector.selectors.checkout_firstname).clear().type('Zoya');\ncy.xpath(_Selector.selectors.checkout_lastname).clear().type('Khan');\ncy.xpath(_Selector.selectors.checkout_address1).clear().type('Sanga');\ncy.xpath(_Selector.selectors.checkout_address2).clear().type('Kavre');\ncy.xpath(_Selector.selectors.checkout_city).clear().type('Bhaktapur');\ncy.xpath(_Selector.selectors.checkout_state).clear().type('Bagmati');\ncy.xpath(_Selector.selectors.checkout_zip).clear().type('12345');\ncy.xpath(_Selector.selectors.checkout_country).clear().type(\"nepal\");\ncy.xpath(_Selector.selectors.checkout_continue_btn).click();\ncy.xpath(_Selector.selectors.confirm_btn).click();\ncy.xpath(_Selector.selectors.delete_btn).click();\ncy.log('Order deleted');",
+              "err": {},
+              "uuid": "aac631f8-d78b-49c4-b3fa-7f7880571156",
+              "parentUUID": "965522cb-e87f-4874-a8ef-ef2e9b284b36",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bfcaea48-d64f-486e-89e0-5e06e38a151d",
+            "b2e81ad3-1f8b-445c-9c81-6b9e27ca91d3",
+            "8d798701-cbab-4aef-a240-39de3a9a2a65",
+            "30a0692b-268a-4fbb-9df3-de900c62e6b0",
+            "21f12f88-1997-4c2e-9fc8-d64ca58b61af",
+            "32cb56e6-18a2-47ba-ba48-bd4e68b7bc4a",
+            "aac631f8-d78b-49c4-b3fa-7f7880571156"
+          ],
+          "failures": [
+            "025f45eb-6c20-470e-8280-43b0dad6da4f",
+            "06252438-3c6e-482b-9e26-81a83e514c00"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 56210,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
